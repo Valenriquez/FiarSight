@@ -18,7 +18,7 @@ export default function Component() {
         
         <Link href="/news"> 
         <Button className="rounded-full px-8 py-2 bg-purple-600 hover:bg-purple-700 text-white w-64 h-12 flex items-center justify-center">
-          News bias detector
+          News impact detector
         </Button></Link>
       </div>
       </div>

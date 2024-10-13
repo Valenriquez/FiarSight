@@ -7,6 +7,7 @@ from pydantic import ConfigDict, BaseModel, Field, EmailStr
 from pydantic.functional_validators import BeforeValidator
 
 from typing_extensions import Annotated
+from fastapi.middleware.cors import CORSMiddleware
 
 from bson import ObjectId
 import motor.motor_asyncio
@@ -17,7 +18,16 @@ app = FastAPI(
     summary="A sample application showing how to use FastAPI to add a ReST API to a MongoDB collection.",
 )
 
-MONGODB_URL = os.environ.get("MONGODB_URL", "")
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:8000"],  # Multiple specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+MONGODB_URL = os.environ.get("MONGODB_URL", "mongodb+srv://test:test@fairsight.fuef7.mongodb.net/?retryWrites=true&w=majority&appName=FairSight&tlsAllowInvalidCertificates=true")
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGODB_URL)
 db = client.fair_sight
 video_collection = db.get_collection("video")
