@@ -24,5 +24,5 @@ def obtener_transcripcion_tsv(youtube_url, idioma='en', output_file='yt_transcri
         print(f"No se pudo obtener la transcripción: {e}")
 
 # Ejemplo de uso
-youtube_url = 'https://www.youtube.com/watch?v=rLEhL8Y4SdU'
+youtube_url = 'https://www.youtube.com/watch?v=xyF60VScB-w'
 obtener_transcripcion_tsv(youtube_url)
